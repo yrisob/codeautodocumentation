@@ -7,13 +7,15 @@ import (
 
 var methodRegexp = regexp.MustCompile(`//@\b(method)+\[+([\s]*)+(\b(name=)+([\s]*)+\"+\b[0-9A-Za-z]+\"+([\s]*))?(([\s]*)+(\,)?([\s]*)+(type=)+([\s]*)+\"+\b[0-9A-Za-z]+\"+([\s]*))?\]+$`)
 var routerRegexp = regexp.MustCompile(`//@\b(router)+\[+([\s]*)+\b(name=)+([\s]*)+\"(\W*\w*)*\"\+([\s]*)+]+$`)
-var requestRegexp = regexp.MustCompile(`//@\b(request)+\[+\b(params=)+\"+\[?(\{?((\w*\:[^\s]*)\,?)*\}?\,?)*\]?\"+\]+$`)
-var responseRegexp = regexp.MustCompile(`//@\b(response)+\[+\b(params=)+\"+\[?(\{?((\w*\:[^\s]*)\,?)*\}?\,?)*\]?\"+\]+$`)
+var requestRegexp = regexp.MustCompile(`//@\b(request)+\[+([\s]*)+\b(params=)+([\s]*)+\"+\[?(\{?((\w*\:[^\s]*)\,?)*\}?\,?)*\]?\"+([\s]*)+\]+$`)
+var responseRegexp = regexp.MustCompile(`//@\b(response)+\[+([\s]*)+\b(answer=)+\"+([\s]*)+\[?(\{?((\w*\:[^\s]*)\,?)*\}?\,?)*\]?\"+([\s]*)+\]+$`)
 var descriptionRegexp = regexp.MustCompile(`//@\b(description)+\[(.*)*\]+$`)
 var methodNameRegexp =   regexp.MustCompile(`(//@method\[(name=)\")?(\")?(\,)?((type=)+\"+\b[0-9A-Za-z]+\")?(\])?`)
 var methodTypeRegexp = regexp.MustCompile(`(//@method\[(name=)+\"+\b[0-9A-Za-z]+\")?(\,)?(type=\")?(\")?(\])?`)
 var routerName = regexp.MustCompile(`(//@\b(router)+\[+([\s]*)+\b(name=)+([\s]*)+\")?(\")?(\])?`)
-var 
+var requestParams =  regexp.MustCompile(`(//@\b(request)+\[+([\s]*)+\b(params=)+([\s]*)+\")?(\"+([\s]*)+\])?`)
+var responseAnswer = regexp.MustCompile(`(//@\b(response)+\[+([\s]*)+\b(answer=)+([\s]*)+\")?(\"+([\s]*)+\])?`)
+var descriptionText = regexp.MustCompile(`(//@description+\[)?(\]$)?`)
 
 type MethodBlock struct{
 	MethodType string
@@ -42,6 +44,17 @@ func getRouterName(attrString string)(string){
 	return routerName.ReplaceAllString(attrString,"")
 } 
 
+func getRequestParams(attrString string)(string){
+	return requestParams.ReplaceAllString(attrString,"")
+}
+
+func getResponseAnswer(attrString string)(string){
+	return responseAnswer.ReplaceAllString(attrString,"")
+}
+
+func getDescriptionText(attrString string)(string){
+	return descriptionRegexp.ReplaceAllString(attrString,"")
+}
 
 func (tb TopicBlock) GetBlocksFromContent(content string){
 	var methodsBlocks = []MethodBlock{}

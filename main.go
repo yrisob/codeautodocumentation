@@ -33,14 +33,26 @@ func ReadAllFilesFromDir(dirName string) []string {
 	return fileList
 }
 
-
-//@router[path="/people"]
+var someText=`some text
+//@router[path="/people/{id}"]
 //@method[name="GetPeople",type="GET"]
-//@response[answer:[{id:1, name: "someName", age:12, gender: "M"},...]]
+//@request[params={id:1}]
+//@response[answer={id:1, name: "someName", age:12, gender: "M"}]
+//@description[где id- идентификатор персоны, name - имя персоны, age- возраст персоны, gende- гендер]
+some footertext`
+
+//@router[path="/people/{id}"]
+//@method[name="GetPeople",type="GET"]
+//@request[params={id:1}]
+//@response[answer={id:1, name: "someName", age:12, gender: "M"}]
 //@description[где id- идентификатор персоны, name - имя персоны, age- возраст персоны, gende- гендер]
 
-func main() {
+var regSearchAttr = regexp.MustCompile(`(//@\b(router)(.*)(\n)*)?(//@\b(method)(.*)(\n)*)(//@\b(router)(.*)(\n)*)?`)
 
+func main() {
+	var stringSlices = regSearchAttr.FindAllStringIndex(someText,1)
+	fmt.Println(stringSlices)
+	fmt.Println(someText[stringSlices[0][0]:stringSlices[0][1]])
 //	var methodRegexp = regexp.MustCompile(`//@\b(method)+\[+([\s]*)+(\b(name=)+([\s]*)+\"+\b[0-9A-Za-z]+\"+([\s]*))?(([\s]*)+(\,)?([\s]*)+(type=)+([\s]*)+\"+\b[0-9A-Za-z]+\"+([\s]*))?\]+$`)
 	var methodAttribute = "//@method[name=\"GetPeople\",type=\"GET\"]"
 
