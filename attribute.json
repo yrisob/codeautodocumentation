@@ -1,0 +1,17 @@
+{
+    "name": "GoProto",
+    "basePath": "/",
+    "routerAttr": "@rout",
+    "methodAttr": "@method:",
+    "requestAttr": "@request:",
+    "responseAttr": "@response:",
+    "routes": [{
+            "routeName": "people",
+            "version": "v1"
+        },
+        {
+            "routeName": "value",
+            "version": "v1"
+        }
+    ]
+}
