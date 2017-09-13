@@ -33,6 +33,12 @@ func ReadAllFilesFromDir(dirName string) []string {
 	return fileList
 }
 
+
+//@router[path="/people"]
+//@method[name="GetPeople",type="GET"]
+//@response[answer:[{id:1, name: "someName", age:12, gender: "M"},...]]
+//@description[где id- идентификатор персоны, name - имя персоны, age- возраст персоны, gende- гендер]
+
 func main() {
 
 //	var methodRegexp = regexp.MustCompile(`//@\b(method)+\[+([\s]*)+(\b(name=)+([\s]*)+\"+\b[0-9A-Za-z]+\"+([\s]*))?(([\s]*)+(\,)?([\s]*)+(type=)+([\s]*)+\"+\b[0-9A-Za-z]+\"+([\s]*))?\]+$`)
