@@ -41,14 +41,18 @@ func main() {
 	re := regexp.MustCompile(`(//@method\[(name=)\")?(\")?(\,)?((type=)+\"+\b[0-9A-Za-z]+\")?(\])?`)
 	reType := regexp.MustCompile(`(//@method\[(name=)+\"+\b[0-9A-Za-z]+\")?(\,)?(type=\")?(\")?(\])?`)
 	methodName := re.ReplaceAllString(methodAttribute,"")
+	var routerName = regexp.MustCompile(`(//@\b(router)+\[+([\s]*)+\b(name=)+([\s]*)+\")?(\")?(\])?`)
+	routerAttr:= "//@router[name=\"/someapiName/methodName\"]"
 	methodType := reType.ReplaceAllString(methodAttribute,"")
+
+	fmt.Println(routerName.ReplaceAllString(routerAttr,""))
 
 	fmt.Println(methodAttribute)
 	fmt.Println(methodName)
 	fmt.Println(methodType)
 
-	fmt.Println("start read directory")
-	files := ReadAllFilesFromDir("../")
-	fmt.Println(files)
+	// fmt.Println("start read directory")
+	// files := ReadAllFilesFromDir("../")
+	// fmt.Println(files)
 
 }
