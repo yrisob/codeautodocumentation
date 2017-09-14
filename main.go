@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"strings"
+	"./topicBlock"
 )
 
 type attribute string
@@ -36,38 +37,26 @@ func ReadAllFilesFromDir(dirName string) []string {
 var someText=`some text
 //@router[path="/people/{id}"]
 //@method[name="GetPeople",type="GET"]
-//@request[params={id:1}]
+//@request[params= {id: 10} ]
 //@response[answer={id:1, name: "someName", age:12, gender: "M"}]
 //@description[где id- идентификатор персоны, name - имя персоны, age- возраст персоны, gende- гендер]
 some footertext`
 
 //@router[path="/people/{id}"]
 //@method[name="GetPeople",type="GET"]
-//@request[params={id:1}]
 //@response[answer={id:1, name: "someName", age:12, gender: "M"}]
 //@description[где id- идентификатор персоны, name - имя персоны, age- возраст персоны, gende- гендер]
 
-var regSearchAttr = regexp.MustCompile(`(//@\b(router)(.*)(\n)*)?(//@\b(method)(.*)(\n)*)(//@\b(router)(.*)(\n)*)?`)
+var regSearchAttr = regexp.MustCompile(`(//@\b(router)(.*)(\n)*)?(//@\b(method)(.*)(\n)*)(//@\b(router)(.*)(\n)*)?(//@\b(response)(.*)(\n)*)?(//@\b(request)(.*)(\n)*)?(//@\b(response)(.*)(\n)*)?(//@\b(description)(.*)(\n)*)?`)
 
 func main() {
 	var stringSlices = regSearchAttr.FindAllStringIndex(someText,1)
 	fmt.Println(stringSlices)
-	fmt.Println(someText[stringSlices[0][0]:stringSlices[0][1]])
-//	var methodRegexp = regexp.MustCompile(`//@\b(method)+\[+([\s]*)+(\b(name=)+([\s]*)+\"+\b[0-9A-Za-z]+\"+([\s]*))?(([\s]*)+(\,)?([\s]*)+(type=)+([\s]*)+\"+\b[0-9A-Za-z]+\"+([\s]*))?\]+$`)
-	var methodAttribute = "//@method[name=\"GetPeople\",type=\"GET\"]"
 
-	re := regexp.MustCompile(`(//@method\[(name=)\")?(\")?(\,)?((type=)+\"+\b[0-9A-Za-z]+\")?(\])?`)
-	reType := regexp.MustCompile(`(//@method\[(name=)+\"+\b[0-9A-Za-z]+\")?(\,)?(type=\")?(\")?(\])?`)
-	methodName := re.ReplaceAllString(methodAttribute,"")
-	var routerName = regexp.MustCompile(`(//@\b(router)+\[+([\s]*)+\b(name=)+([\s]*)+\")?(\")?(\])?`)
-	routerAttr:= "//@router[name=\"/someapiName/methodName\"]"
-	methodType := reType.ReplaceAllString(methodAttribute,"")
+	tb:= topicBlock.TopicBlock{}
+	tb.GetBlocksFromContent(someText,"test")
 
-	fmt.Println(routerName.ReplaceAllString(routerAttr,""))
-
-	fmt.Println(methodAttribute)
-	fmt.Println(methodName)
-	fmt.Println(methodType)
+	fmt.Println(tb)
 
 	// fmt.Println("start read directory")
 	// files := ReadAllFilesFromDir("../")
