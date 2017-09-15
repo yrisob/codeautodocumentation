@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>API Method Documentation</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -24,13 +22,18 @@
             <h1>Документация методов API</h1> 
             {{range .}}
                 <h3>{{print .TopicName}}</h3>
+                    <br>
                     {{range .MethodsBlocks}}
-                    <address><strong><code>{{print .MethodType}}</code>&nbsp;{{print .MethodName}}</strong>
-                        Rout:&nbsp;<b>{{print .Router }}</b><br>
-                        Request:&nbsp;<b>{{print .RequestParams}}</b><br>
-                        Response:&nbsp;<b>{{print .ResponseParams}}</b><br>
-                        Description:&nbsp;<b>{{print .Description }}</b><br></address>
+                    <p class="bg-success"><strong>{{print .MethodName}}</strong></p>
+                    <address><strong><code>{{print .MethodType}}</code>&nbsp;{{print .MethodName}}</strong><br>
+                        <strong><code>Rout:</code></strong>&nbsp;<b>{{print .Router }}</b><br>
+                        <strong><code>Request:</code>&nbsp;<b>{{print .RequestParams}}</b><br></strong>
+                        <strong><code>Response:</code>&nbsp;<b>{{print .ResponseParams}}</b><br></strong>
+                        <strong><code>Description:</code>&nbsp;<b>{{print .Description }}</b><br></strong>
+                    </address>
+                    <hr />
                     {{end}}
+                    <br>
             {{end}}
         </div>
     </div>

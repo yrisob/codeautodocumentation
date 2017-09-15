@@ -12,8 +12,8 @@ var descriptionRegexp = regexp.MustCompile(`//@\b(description)\[(.*)\]`)
 var methodNameRegexp =   regexp.MustCompile(`(//@method\[(name=)\")?(\")?(\,)?((type=)+\"+\b[0-9A-Za-z]+\")?(\])?`)
 var methodTypeRegexp = regexp.MustCompile(`(//@method\[(name=)+\"+\b[0-9A-Za-z]+\")?(\,)?(type=\")?(\")?(\])?`)
 var routerName = regexp.MustCompile(`(//@\b(router)+\[+([\s]*)+\b(path=)+([\s]*)+\")?(\")?(\])?`)
-var requestParams =  regexp.MustCompile(`(//@\b(request)\[[\s]*\b(params=)[\s]*)?([\s]*\])?`)
-var responseAnswer = regexp.MustCompile(`(//@\b(response)\[[\s]*\b(answer=)[\s]*)?([\s]*\])?`)
+var requestParams =  regexp.MustCompile(`(//@\b(request)\[[\s]*\b(params=)[\s]*)?([\s]*\]$)?`)
+var responseAnswer = regexp.MustCompile(`(//@\b(response)\[[\s]*\b(answer=)[\s]*)?([\s]*\]$)?`)
 var descriptionText = regexp.MustCompile(`(//@\b(description)\[)?(\])?`)
 
 type MethodBlock struct{
