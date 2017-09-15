@@ -1,0 +1,39 @@
+<!-- {{range .}}{{println .TopicName ":"}}{{range .MethodsBlocks}}{{println .MethodType ":" .MethodName}}{{end}}{{end}} -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>API Method Documentation</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <p class="lead">Документация палученная по средуству анализа кода, по аттрибутам с комменатриями 
+                <code>//@router</code>
+                <code>//@method</code>
+                <code>//@request</code> 
+                <code>//@response</code> 
+                <code>//@description</code>
+            </p>
+            <h1>Документация методов API</h1> 
+            {{range .}}
+                <h3>{{print .TopicName}}</h3>
+                    {{range .MethodsBlocks}}
+                    <address><strong><code>{{print .MethodType}}</code>&nbsp;{{print .MethodName}}</strong>
+                        Rout:&nbsp;<b>{{print .Router }}</b><br>
+                        Request:&nbsp;<b>{{print .RequestParams}}</b><br>
+                        Response:&nbsp;<b>{{print .ResponseParams}}</b><br>
+                        Description:&nbsp;<b>{{print .Description }}</b><br></address>
+                    {{end}}
+            {{end}}
+        </div>
+    </div>
+</body>
+
+</html>

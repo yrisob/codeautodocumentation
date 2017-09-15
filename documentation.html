@@ -1,0 +1,60 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>API Method Documentation</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <p class="lead">Документация палученная по средуству анализа кода, по аттрибутам с комменатриями 
+                <code>//@router</code>
+                <code>//@method</code>
+                <code>//@request</code> 
+                <code>//@response</code> 
+                <code>//@description</code>
+            </p>
+            <h1>Документация методов API</h1> 
+            
+                <h3>valueController</h3>
+                    
+                    <address><strong><code>GET</code>&nbsp;GetValues</strong>
+                        Rout:&nbsp;<b>/values</b><br>
+                        Request:&nbsp;<b></b><br>
+                        Response:&nbsp;<b>[{id:1, name: &#34;someValueName&#34;, value: &#34;123&#34;},{id:2, name: &#34;someValue2Name&#34;, value: &#34;325&#34;}</b><br>
+                        Description:&nbsp;<b>где id- идентификатор значения, name - имя значения, value- само значение</b><br></address>
+                    
+                    <address><strong><code>GET</code>&nbsp;GetValues</strong>
+                        Rout:&nbsp;<b>/values/{id}</b><br>
+                        Request:&nbsp;<b>{id:1}</b><br>
+                        Response:&nbsp;<b>{id:1, name: &#34;someValueName&#34;, value: &#34;123&#34;},{id:2, name: &#34;someValue2Name&#34;, value: &#34;325&#34;}</b><br>
+                        Description:&nbsp;<b>где id- идентификатор значения, name - имя значения, value- само значение</b><br></address>
+                    
+            
+                <h3>peopleController</h3>
+                    
+                    <address><strong><code>GET</code>&nbsp;GetPeople</strong>
+                        Rout:&nbsp;<b>/people</b><br>
+                        Request:&nbsp;<b></b><br>
+                        Response:&nbsp;<b>[{id:1, name: &#34;someName&#34;, age:12, gender: &#34;M&#34;},...</b><br>
+                        Description:&nbsp;<b>где id- идентификатор персоны, name - имя персоны, age- возраст персоны, gende- гендер</b><br></address>
+                    
+                    <address><strong><code>GET</code>&nbsp;GetPeople</strong>
+                        Rout:&nbsp;<b>/people/{id}</b><br>
+                        Request:&nbsp;<b>{id:1}</b><br>
+                        Response:&nbsp;<b>{id:1, name: &#34;someName&#34;, age:12, gender: &#34;M&#34;}</b><br>
+                        Description:&nbsp;<b>где id- идентификатор персоны, name - имя персоны, age- возраст персоны, gende- гендер</b><br></address>
+                    
+            
+        </div>
+    </div>
+</body>
+
+</html>
